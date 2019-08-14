@@ -12,5 +12,6 @@ try:
     scrap = Scrapper("https://en.wikipedia.org/wiki/List_of_US_Open_men's_singles_champions")
     a = scrap.pageGetter()
     scrap.wikipediaTable(a)
+    me = scrap.wikipediaContent()
 finally:
     a.close()
