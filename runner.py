@@ -6,12 +6,16 @@ Created on Thu Jun 27 18:27:46 2019
 @author: ubuntu
 """
 
-from Scrapper import Scrapper
+from Scrapper import Scrapper, WikiURLGetter
+from KnowledgeCreation import KnowledgeCreation
 
 try:
-    scrap = Scrapper("https://en.wikipedia.org/wiki/List_of_US_Open_men's_singles_champions")
-    a = scrap.pageGetter()
+    URL = WikiURLGetter("Machine learning").getURL()
+    scrap = Scrapper(URL)
+    a = scrap.createDriver()
     scrap.wikipediaTable(a)
     me = scrap.wikipediaContent()
+    KnowledgeCreation(me).textPreprocessing()
+    
 finally:
     a.close()
